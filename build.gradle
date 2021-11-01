@@ -1,0 +1,44 @@
+plugins {
+    id 'application'
+    id 'java'
+}
+
+group 'org.cj5x'
+version '0.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+if (hasProperty('buildScan')) {
+    buildScan {
+        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+        termsOfServiceAgree = 'yes'
+    }
+}
+
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'com.google.code.gson:gson:2.8.8'
+    implementation 'com.sparkjava:spark-core:2.9.3'
+    implementation 'org.bitcoinj:bitcoinj-core:0.15.10'
+    implementation 'org.web3j:crypto:5.0.0'
+    implementation 'joda-time:joda-time:2.10.10'
+    implementation 'commons-codec:commons-codec:1.15'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.0'
+}
+
+application {
+    mainClass = 'org.white5moke.cj5x.CJ5X'
+}
+
+jar {
+    manifest.attributes('Main-Class': 'org.white5moke.cj5x.CJ5X')
+}
+
+test {
+    useJUnitPlatform()
+}
+
